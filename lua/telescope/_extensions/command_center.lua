@@ -30,6 +30,8 @@ local user_opts = {
   },
   separator = " ",
   auto_replace_desc_with_cmd = true,
+	prompt_title = "Command Center",
+	prompt_prefix = "> ",
 }
 
 -- Override default opts by user
@@ -47,6 +49,7 @@ function themes.command_center(opts)
     results_title = false,
     sorting_strategy = "ascending",
     layout_strategy = "center",
+		prompt_prefix = opts.prompt_prefix,
     layout_config = {
       preview_cutoff = 0,
       anchor = "N",
@@ -119,7 +122,7 @@ local function run(filter)
 
   -- opts = opts or {}
   pickers.new(opts, {
-    prompt_title = "Command Center",
+    prompt_title = opts.prompt_title,
 
     finder = finders.new_table({
       results = filtered_items,
